@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Random from './Random.js';
+import Home from './Home.js';
 import logo from './logo.svg';
 import './App.css';
 
@@ -10,9 +10,12 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
+        <Home />
       </div>
     );
   }
 }
+
+
 
 export default App;
