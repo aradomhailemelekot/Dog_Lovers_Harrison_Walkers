@@ -7,15 +7,12 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            breed: '',
-            id: '',
-            name: '',
-            tempermant: '',
-            url: ''
+            breeds: [],
+
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.onFormSubmit = this.onFormSubmit.bind(this);
+
     }
 
     handleInputChange(theyTyped) {
@@ -24,17 +21,20 @@ class Home extends Component {
         })
     }
 
-    onFormSubmit() {
-        return axios.get('https://api.TheDogAPI.com/v1/images/search?breed_ids')
+    getImages() {
+        return axios.get('https://api.TheDogAPI.com/v1/breeds/')
             .then(res => res)
             .then(posts => {
                 this.setState({
+                    breeds: posts.data
                 })
-                console.log('checkme', posts)
             })
     }
 
 
+    componentDidMount() {
+        this.getImages()
+    }
 
 
     render() {
