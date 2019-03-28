@@ -70,7 +70,7 @@ class Home extends Component {
 
     const dogs = this.state.breeds.map((eachDog) => (
       <div key={eachDog.id}>
-        <p>Breed: {eachDog.name} {eachDog.id}</p>
+        <p> {eachDog.name} </p>
       </div>
     ))
 
@@ -82,14 +82,14 @@ class Home extends Component {
             type='text'
             value={this.state.inputFormValue}
             onChange={this.handleInputChange}
-            placeholder="Type in favorite dog"
+            placeholder="Type dog breed"
           />
         </form>
         {this.state.photo &&
           <img src={this.state.photo} alt='dummyphoto' />
         }
         <br />
-        <p>Show me All Dogs Breed and URL</p>
+        <p>Available Dog Breeds</p>
         {dogs}
       </div >
     )

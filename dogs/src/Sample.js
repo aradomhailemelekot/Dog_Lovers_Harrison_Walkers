@@ -1,27 +1,14 @@
-// import React, { Component } from 'react'
+import React, { Component } from 'react'
 
-// export default class Sample extends Component {
-//     state = {
-//         items: this.props.items || []
-//         showItems: false,
-//     }
+export default class Sample extends Component {
+    render() {
+        return (
+            <div>
+                <p className="lead">
+                    Welcome to our web page. Designed for dog lovers of all sorts! You can utilize our search bar to find photos of your favirite dog breed. Have a look! In addition to lovely photos, we offer pet services (Dog Walks and Dog Training) for your beloved dog.
+            </p>
+            </div>
+        )
+    }
 
-//     render() {
-//         return <div>
-//             <div
-//                 className="select-box--arrow"
-//             ><span
-//                     className={`${this.state.showItems ? 'select-box-arrow-up' : 'select-box--arrow-down'}`} />
-//             </div>
-
-//             <div
-//                 style={{ display: this.state.showItems ? 'block' : 'nonw' }}
-//                 {
-//                 this.state.items.map(item => <div key={item.id}>
-//                     {item.value}
-//                 </div>)
-//                 }
-//             </div>
-//         </div>
-//     }
-// }
+}
