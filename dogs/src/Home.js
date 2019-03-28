@@ -4,75 +4,87 @@ import axios from 'axios';
 
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            breeds: [],
-            inputFormValue: '',
-            photo: ''
-        };
+  constructor(props) {
+    super(props);
+    this.state = {
+      breeds: [],
+      inputFormValue: '',
+      photo: null
+    };
 
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.getBreeds = this.getBreeds.bind(this);
-        this.getPhoto = this.getPhoto.bind(this)
-    }
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.getBreeds = this.getBreeds.bind(this);
+    this.getPhoto = this.getPhoto.bind(this)
+  }
 
-    handleInputChange(event) {
-        console.log(`The event.target.value is `)
-        console.log(event.target.value)
+  handleInputChange(event) {
+    this.setState({
+      inputFormValue: event.target.value
+    })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    this.getPhoto(this.state.inputFormValue)
+    this.setState({
+      inputFormValue: ''
+    })
+  }
+
+  async getBreeds() {
+    axios.get('https://api.TheDogAPI.com/v1/breeds/')
+      .then(posts => {
         this.setState({
-            inputFormValue: event.target.value
+          breeds: posts.data
         })
-    }
+      })
+  }
 
-    async getBreeds() {
-        axios.get('https://api.TheDogAPI.com/v1/breeds/')
-            .then(posts => {
-                this.setState({
-                    breeds: posts.data
-                })
-            })
-    }
+  async getPhoto(id) {
+    console.log(id)
+    axios.get(`https://api.thedogapi.com/v1/images/search?breed_ids=${id}`)
+      .then((response) => {
+        const url = response.data.length && response.data[0].url
+        this.setState({
+          photo: url || 'https://i.imgur.com/f77SARV.jpg'
+        })
+      })
+  }
+  componentDidMount() {
+    this.getBreeds()
+  }
 
-    async getPhoto() {
-        axios.get('https://api.thedogapi.com/v1/images/search?breed_ids=')
-            .then(pictures => {
-                this.setState({
-                    photo: 'https://api.thedogapi.com/v1/images/search?breed_ids='
-                })
-            })
-    }
-    componentDidMount() {
-        this.getBreeds()
-    }
+  render() {
 
-    render() {
+    const dogs = this.state.breeds.map((eachDog) => (
+      <div key={eachDog.id}>
+        <p>Breed: {eachDog.name} {eachDog.id}</p>
+      </div>
+    ))
 
-        const dogs = this.state.breeds.map((eachDog) => (
-            <div key={eachDog.id}>
-                <p>Breed: {eachDog.name}</p>
-            </div>
-        ))
+    return (
 
-        return (
-
-            <div>
-                <form onSubmit={dogs}>
-                    <input
-                        type='text'
-                        value={this.state.getBreeds}
-                        onChange={this.handleInputChange}
-                    />
-
-                </form>
-                <br />
-                <p>Show me All Dogs Breed and URL</p>
-                <p>{dogs}</p>
-                <img src='{this.state.photo}' alt='dummyphoto'></img>
-            </div >)
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type='text'
+            value={this.state.inputFormValue}
+            onChange={this.handleInputChange}
+            placeholder="Please input a number"
+          />
+        </form>
+        {this.state.photo &&
+          <img src={this.state.photo} alt='dummyphoto' />
+        }
+        <br />
+        <p>Show me All Dogs Breed and URL</p>
+        {dogs}
+      </div >
+    )
 
 
-    }
+  }
 }
 
 export default Home;
