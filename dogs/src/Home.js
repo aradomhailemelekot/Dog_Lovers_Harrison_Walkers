@@ -89,8 +89,8 @@ class Home extends Component {
           <img src={this.state.photo} alt='https://i.imgur.com/7LgUlA2.jpg' />
         }
         <br />
-        <p>Available Dog Breeds</p>
-        {dogs}
+        {/* <p>Available Dog Breeds</p>
+        {dogs} */}
       </div >
     )
   }
