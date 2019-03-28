@@ -41,16 +41,27 @@ class Home extends Component {
       })
   }
 
-  async getPhoto(id) {
-    console.log(id)
-    axios.get(`https://api.thedogapi.com/v1/images/search?breed_ids=${id}`)
+  async getPhoto(breed) {
+    console.log(breed)
+    axios.get(`https://dog.ceo/api/breed/${breed}/images/random`)
       .then((response) => {
-        const url = response.data.length && response.data[0].url
+        const url = response.data.message
         this.setState({
-          photo: url || 'https://i.imgur.com/f77SARV.jpg'
+          photo: url
         })
       })
   }
+
+  // async getPhoto(id) {
+  //   console.log(id)
+  //   axios.get(`https://api.thedogapi.com/v1/images/search?breed_ids=${id}`)
+  //     .then((response) => {
+  //       const url = response.data.length && response.data[0].url
+  //       this.setState({
+  //         photo: url || 'https://i.imgur.com/f77SARV.jpg'
+  //       })
+  //     })
+  // }
   componentDidMount() {
     this.getBreeds()
   }
