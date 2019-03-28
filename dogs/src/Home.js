@@ -82,7 +82,7 @@ class Home extends Component {
             type='text'
             value={this.state.inputFormValue}
             onChange={this.handleInputChange}
-            placeholder="Please input a number"
+            placeholder="Type in favorite dog"
           />
         </form>
         {this.state.photo &&

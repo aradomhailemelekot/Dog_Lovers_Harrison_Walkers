@@ -14,6 +14,15 @@ class App extends Component {
             <img src={Logo} className="mx-auto" alt="Logo" />
           </header>
         </div>
+        <div className="navbar">
+          <li><a href='www.harrisonwalkers.com'>Dog Walks</a></li>
+          <li><a href='#'>Photos</a></li>
+          <li><a href='#'>Blog</a></li>
+          <li><a href='www.harrisonwalkers.com'>More Info</a></li>
+          <a href='#'>Contact Us</a>
+
+
+        </div>
         <div className="row">
           <Home />
           <Header />
