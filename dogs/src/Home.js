@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Button from './Button.js';
+// import Button from './Button.js';
 
 
 class Home extends Component {
@@ -8,17 +8,20 @@ class Home extends Component {
         super(props);
         this.state = {
             breeds: [],
-
+            inputFormValue: '',
+            photo: ''
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.getBreeds = this.getBreeds.bind(this);
-
+        this.getPhoto = this.getPhoto.bind(this)
     }
 
-    handleInputChange(userTyped) {
+    handleInputChange(event) {
+        console.log(`The event.target.value is `)
+        console.log(event.target.value)
         this.setState({
-            inputFormValue: userTyped.target.value
+            inputFormValue: event.target.value
         })
     }
 
@@ -31,15 +34,23 @@ class Home extends Component {
             })
     }
 
+    async getPhoto() {
+        axios.get('https://api.thedogapi.com/v1/images/search?breed_ids=')
+            .then(pictures => {
+                this.setState({
+                    photo: 'https://api.thedogapi.com/v1/images/search?breed_ids='
+                })
+            })
+    }
     componentDidMount() {
         this.getBreeds()
     }
 
     render() {
 
-        const dogs = this.state.breeds.map((breed, index) => (
-            <div key={index}>
-                {breed.name}
+        const dogs = this.state.breeds.map((eachDog) => (
+            <div key={eachDog.id}>
+                <p>Breed: {eachDog.name}</p>
             </div>
         ))
 
@@ -50,28 +61,17 @@ class Home extends Component {
                     <input
                         type='text'
                         value={this.state.getBreeds}
-                        onChange={dogs}
+                        onChange={this.handleInputChange}
                     />
+
                 </form>
                 <br />
-                {/* < searchresult={inputFormValue: userTyped.target.value} */}
-
+                <p>Show me All Dogs Breed and URL</p>
+                <p>{dogs}</p>
+                <img src='{this.state.photo}' alt='dummyphoto'></img>
             </div >)
 
-        {/* <h1>Dropdown Button</h1>
-                <div style={{ margin: '16px' }}>
-                    <Button
-                        itms={[
-                            { value: "dogs" },
-                        ]}
-                    />
-                </div> */}
 
-        {/* // <div>
-        //     <Button breeds={this.state.breeds} />
-        //     {dogs}
-        // </div>
-        ; */}
     }
 }
 
