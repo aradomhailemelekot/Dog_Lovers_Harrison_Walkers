@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import Button from './Button.js';
+
 
 
 class Home extends Component {
@@ -42,41 +42,41 @@ class Home extends Component {
   }
 
   async getPhoto(breed) {
-    console.log(breed)
-    axios.get(`https://dog.ceo/api/breed/${breed}/images/random`)
-      .then((response) => {
-        const url = response.data.message
-        this.setState({
-          photo: url
+    if (breed.split(' ').length === 1) {
+
+      axios.get(`https://dog.ceo/api/breed/${breed}/images/random`)
+        .then((response) => {
+          const url = response.data.message
+          this.setState(prevState => ({
+            photo: url
+          }))
         })
-      })
+    }
+    else {
+      this.setState(prevState => ({
+        photo: 'https://i.imgur.com/7LgUlA2.jpg'
+      }))
+    }
   }
 
-  // async getPhoto(id) {
-  //   console.log(id)
-  //   axios.get(`https://api.thedogapi.com/v1/images/search?breed_ids=${id}`)
-  //     .then((response) => {
-  //       const url = response.data.length && response.data[0].url
-  //       this.setState({
-  //         photo: url || 'https://i.imgur.com/f77SARV.jpg'
-  //       })
-  //     })
-  // }
   componentDidMount() {
     this.getBreeds()
   }
 
   render() {
 
+
     const dogs = this.state.breeds.map((eachDog) => (
       <div key={eachDog.id}>
-        <p> {eachDog.name} </p>
-      </div>
+        <p
+          onClick={() => this.getPhoto(eachDog.name)}
+        > {eachDog.name} </p>
+      </div >
     ))
 
     return (
 
-      <div>
+      <div className="col-sm-4 offset-sm-4">
         <form onSubmit={this.handleSubmit}>
           <input
             type='text'
@@ -86,16 +86,15 @@ class Home extends Component {
           />
         </form>
         {this.state.photo &&
-          <img src={this.state.photo} alt='dummyphoto' />
+          <img src={this.state.photo} alt='https://i.imgur.com/7LgUlA2.jpg' />
         }
         <br />
         <p>Available Dog Breeds</p>
         {dogs}
       </div >
     )
-
-
   }
 }
 
 export default Home;
+
