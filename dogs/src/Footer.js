@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import { Link, BrowserRouter } from 'react-router-dom'
 
 export default class Footer extends Component {
     render() {
         return (
             <div>
-                <footer className='footer'>
-                    <p> Thank you for visiting our website. Woof! </p>
-                </footer>
+                <BrowserRouter>
+                    <footer className='footer'>
+                        <Link to="/welcome"> Thank you for visiting our site. Woof! </Link>
+                    </footer>
+                </BrowserRouter>
             </div>
         )
     }
