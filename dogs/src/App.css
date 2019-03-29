@@ -20,6 +20,9 @@ header img {
 
 .footer {
   background-color: #DA223E;  
+  text-align: center;
+  font-size: 8pt;
+  color: white;
 }
 
 #input-field {

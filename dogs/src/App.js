@@ -29,7 +29,7 @@ class App extends Component {
         <div className="row">
           <Home />
         </div>
-        <div className="col-sm-4 offset-sm-4 mx-auto">
+        <div className="footer">
           <Footer />
         </div>
       </div>
