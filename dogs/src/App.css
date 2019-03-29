@@ -1,8 +1,13 @@
 header img {
   width: 100%;
+  
 }
 
 .navbar {
   background-color: #DA223E;
   color: black;
+}
+
+.footer {
+  background-color: #DA223E;  
 }

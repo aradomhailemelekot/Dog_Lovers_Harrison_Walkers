@@ -4,7 +4,9 @@ import Logo from './color_logo_transparent.png';
 import Header from './Header.js';
 import './bootstrap.min.css';
 import './App.css';
-import Sample from './Sample'
+import Sample from './Sample';
+import Footer from './Footer';
+
 
 class App extends Component {
   render() {
@@ -25,12 +27,16 @@ class App extends Component {
         <div className="row">
           <Home />
         </div>
+        <div className="col-sm-4 offset-sm-4 mx-auto">
+          <Footer />
+        </div>
       </div>
     );
   }
 }
 
 export default App;
+
 
 
 
