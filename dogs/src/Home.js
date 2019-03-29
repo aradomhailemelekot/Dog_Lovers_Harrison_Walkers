@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import { Route, BrowserRouter } from 'react-router-dom';
-// import Welcome from './Welcome';
-
-
 
 class Home extends Component {
   constructor(props) {
@@ -78,28 +74,28 @@ class Home extends Component {
 
     return (
 
-      <div className="col-sm-4 offset-sm-4">
+      <div className="col-sm-4 offset-sm-2">
         <form onSubmit={this.handleSubmit}>
-          <input
+          <input id="input-field"
             type='text'
             value={this.state.inputFormValue}
             onChange={this.handleInputChange}
             placeholder="Type dog breed"
           />
         </form>
+
         {this.state.photo &&
           <img src={this.state.photo} alt='https://i.imgur.com/7LgUlA2.jpg' />
         }
         <br />
-        <p>Available Dog Breeds</p>
-        {dogs}
+
       </div >
-
-
 
     )
   }
 }
 
 export default Home;
+
+
 

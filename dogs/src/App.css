@@ -1,3 +1,4 @@
+
 header img {
   width: 100%;
   
@@ -5,9 +6,56 @@ header img {
 
 .navbar {
   background-color: #DA223E;
-  color: black;
+  color: white;
+  text-decoration: none;
+  text-decoration-color: white;
+  text-align: inherit;
+}
+
+.style {
+  list-style: none;
+  color: white;
+  text-decoration-line: none;
 }
 
 .footer {
   background-color: #DA223E;  
 }
+
+#input-field {
+  position: relative;
+  left: 150px;
+}
+
+.white-font {
+  color: white;
+}
+
+
+/* 
+.app {
+  max-width: 60rem;
+  width: 100%;
+  background: lightgray;
+  padding: 1rem;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  > header,
+  > main,
+  > footer {
+    width: 100%;
+    padding: 1rem;
+    margin: .5rem 1rem;
+    text-align: center;
+    transition: 200ms;
+    &:hover {
+      box-shadow: 0 0 2rem gray;
+    }
+  } */

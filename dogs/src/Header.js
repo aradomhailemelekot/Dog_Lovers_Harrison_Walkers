@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-import Welcome from './Welcome.js'
 
 export default class Header extends Component {
     render() {
 
         return (
-            <BrowserRouter>
 
-                <div>
-                    <div className="navbar">
 
-                        <li><a href='https://www.harrisonwalkers.com'>Dog Walks</a></li>
-                        <li><a href='https://random.dog/'>Photos</a></li>
-                        <li><a href='https://sitstay.com/blogs/good-dog-blog'>Blog</a></li>
-                        <li><a href='https://www.harrisonwalkers.com'>More Info</a></li>
+            <div className="navbar">
 
-                    </div>
-                    <Link to path="/welcome" component={Welcome} />
-                </div >
-            </BrowserRouter >
+                <li className="style"><a href='https://www.harrisonwalkers.com'><font color="white">Dog Walks</font> </a></li>
+
+                <li className="style"><a href='https://random.dog/'><font color="white">Photos</font></a></li>
+
+                <li className="style"><a href='https://sitstay.com/blogs/good-dog-blog'><font color="white">Blog</font></a></li>
+
+                <li className="style"><a href='https://www.harrisonwalkers.com'><font color="white">More Info</font></a></li>
+
+            </div>
+
         )
     }
 }

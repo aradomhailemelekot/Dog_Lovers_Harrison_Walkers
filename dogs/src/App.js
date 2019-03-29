@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Home from './Home.js';
 import Logo from './color_logo_transparent.png';
 import Header from './Header.js';
-import Welcome from './Welcome.js';
-import { Route, BrowserRouter } from 'react-router-dom';
 import './bootstrap.min.css';
 import './App.css';
 import Sample from './Sample';
@@ -27,9 +25,6 @@ class App extends Component {
         <br />
         <div><Sample /></div>
 
-        <BrowserRouter>
-          <Route path="/welcome" render={() => <Welcome />} />
-        </BrowserRouter>
 
         <div className="row">
           <Home />
